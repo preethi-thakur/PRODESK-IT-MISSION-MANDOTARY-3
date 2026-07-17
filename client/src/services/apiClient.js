@@ -1,16 +1,28 @@
-import axios from 'axios';
+import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+if (!API_URL) {
+  throw new Error(
+    "VITE_API_URL is not defined. Please set it in your environment variables."
+  );
+}
 
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
+  baseURL: API_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    const message = error.response?.data?.message || error.message || 'An error occurred';
+    const message =
+      error.response?.data?.message ||
+      error.message ||
+      "An error occurred";
+
     return Promise.reject(new Error(message));
   }
 );
