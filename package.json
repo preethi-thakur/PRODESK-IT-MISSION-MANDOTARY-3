@@ -1,0 +1,31 @@
+{
+  "name": "class-waitlist-sms-notification",
+  "version": "1.0.0",
+  "description": "Class Waitlist SMS Notification System with Twilio Mock",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm run dev --workspace=server",
+    "dev:client": "npm run dev --workspace=client",
+    "build": "npm run build --workspace=server && npm run build --workspace=client",
+    "build:server": "npm run build --workspace=server",
+    "build:client": "npm run build --workspace=client",
+    "start": "npm run start --workspace=server",
+    "lint": "npm run lint --workspace=server && npm run lint --workspace=client",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "caniuse-lite": "^1.0.30001690",
+    "concurrently": "^8.2.2",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
